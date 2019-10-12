@@ -29,10 +29,10 @@ class Album(SEO):
                                      options={'quality': 90})
     
     def get_absolute_url(self):
-        return reverse('album_detail', args=[self.slug])
+        return reverse('album', args=[self.slug])
 
     def image_tag(self):
-        return mark_safe('<img src="{0}" width="200px">'.format(self.image.url))
+        return mark_safe('<a href="{0}"><img src="{0}" width="200px"></a>'.format(self.image.url))
     image_tag.short_description = 'Предпросмотр изоражения'
     image_tag.allow_tags = True
 

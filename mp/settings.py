@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'core',
     'news',
     'albums',
+    'documents',
+    'employees',
 ]
 
 MIDDLEWARE = [
@@ -144,9 +146,9 @@ JET_DEFAULT_THEME = 'default'
 
 JET_THEMES = [
     {
-        'theme': 'default', # theme folder name
-        'color': '#47bac1', # color of the theme's button in user menu
-        'title': 'Default' # theme title
+        'theme': 'default', 
+        'color': '#47bac1', 
+        'title': 'Default'
     },
     {
         'theme': 'green',
@@ -181,8 +183,8 @@ DIRECTORY = 'media/'
 SITE_ID = 1
 
 TINYMCE_DEFAULT_CONFIG = {
-    'height': 360,
-    'width': 1120,
+    'height': 400,
+    'width': 'auto',
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,
     'selector': 'textarea',
@@ -195,8 +197,8 @@ TINYMCE_DEFAULT_CONFIG = {
             anchor ''',
     'toolbar1': '''
             fullscreen preview bold italic underline | fontselect,
-            fontsizeselect  | forecolor backcolor | alignleft alignright |
-            aligncenter alignjustify | indent outdent | bullist numlist table |
+            fontsizeselect | alignleft alignright |
+            aligncenter alignjustify | indent outdent | table |
             | link image media | code''',
     'contextmenu': 'formats | link image',
     'menubar': False,
