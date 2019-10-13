@@ -5,7 +5,7 @@ from documents.models import Document, DocumentCategory
 class DocumentInline(admin.TabularInline):
     model = Document
     extra = 0
-    fields = ('name', 'document', 'is_active')
+    fields = ('name', 'document')
 
 
 @admin.register(DocumentCategory)

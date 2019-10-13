@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>{{ document_category.seo_title }}</title>
+    <meta name="description" content="{{ document_category.seo_desc }}">
+    <meta name="keywords" content="{{ document_category.seo_kwrds }}">
+{% endblock title %}
+
+{% block content %}
+<main role="main">
+    <div class="container">
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 mb-md-0">
+            <ol class="breadcrumb small">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                <li class="breadcrumb-item"><a href="content.html">О проекте</a></li>
+                <li class="breadcrumb-item"><a href="{{ main_doc_category.get_absolute_url }}">Документы</a></li>
+                <li class="breadcrumb-item active">Локальные нормативные акты</li>
+            </ol>
+
+            <div class="ya-share2 mb-3 ml-md-auto my-auto text-nowrap" data-services="vkontakte,facebook,telegram,twitter,whatsapp,skype,odnoklassniki" data-limit="3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="bg-white py-2 d-none d-lg-block">
+                    <ul class="list-unstyled side-menu m-0">
+                        <li class="border-bottom font-2"><a href="content.html" class="text-secondary py-2 px-3 d-block">Миссия и история</a></li>
+                        <li class="border-bottom font-2 sub"><a href="{{ main_doc_category.get_absolute_url }}" class="text-secondary py-2 px-3 d-block">Документы<i class="fas fa-angle-down"></i></a>
+                            <ul class="list-unstyled pb-3 pl-3">
+                                {% for item in document_categories %}
+                                    <li><a href="{{ item.get_absolute_url }}" class="text-muted py-2 px-3 d-block {% if item == document_category %}active{% endif %}">{{ item.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="border-bottom font-2"><a href="{% url 'employees' %}" class="text-secondary py-2 px-3 d-block">Руководство</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+
+                <article class="mb-5 bg-white p-4 p-md-5">
+                    <h1 class="mt-0">{{ document_category.title }}</h1>
+                    <div class="docs narrow">
+                        {% for document in document_category.documents.all %}
+                        <a href="{{ document.document.url }}" target="_blank" class="pl-4 d-block mb-3 border-bottom pb-3 text-muted"><i class="far fa-file-alt text-primary mr-2 ml-n4"></i>{{ document.name }}</a>
+                        {% endfor %}
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+    </div>
+</main>
+{% endblock content%}

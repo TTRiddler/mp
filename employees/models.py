@@ -12,6 +12,7 @@ class Employee(models.Model):
     phone = models.CharField(max_length=20, verbose_name='Телефон')
     email = models.EmailField(max_length=20, verbose_name='E-mail')
     is_active = models.BooleanField(default=True, verbose_name='Показывать на сайте')
+    is_main = models.BooleanField(default=False, verbose_name='Главный')
 
     def get_picture_url(self, filename):
         ext = filename.split('.')[-1]

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main role="main">
+    <div class="container">
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 mb-md-0">
+            <ol class="breadcrumb small">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                <li class="breadcrumb-item"><a href="content.html">О проекте</a></li>
+                <li class="breadcrumb-item active">Руководство</li>
+            </ol>
+
+            <div class="ya-share2 mb-3 ml-md-auto my-auto text-nowrap" data-services="vkontakte,facebook,telegram,twitter,whatsapp,skype,odnoklassniki" data-limit="3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="bg-white py-2 d-none d-lg-block">
+                    <ul class="list-unstyled side-menu m-0">
+                        <li class="border-bottom font-2"><a href="content.html" class="text-secondary py-2 px-3 d-block">Миссия и история</a></li>
+                        <li class="border-bottom font-2 sub"><a href="{{ main_doc_category.get_absolute_url }}" class="text-secondary py-2 px-3 d-block">Документы<i class="fas fa-angle-down"></i></a></li>
+                        <li class="border-bottom font-2"><a href="{% url 'employees' %}" class="text-secondary py-2 px-3 d-block active">Руководство</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+
+                <h1 class="mt-0">Руководство</h1>
+                <div class="leader bg-white px-sm-5 py-sm-5 py-4 px-4 mb-4 text-center">
+                    <img src="{{ leader.image_thumbnail.url }}" class="rounded-circle mb-3">
+                    <h3 class="mt-0 mb-2 h5 text-secondary">{{ leader.name }}</h3>
+                    <p class="text-muted small mb-0">{{ leader.role }}</p>
+                    <div class="divider my-4 mx-auto"></div>
+                    <p class="text-muted font-2 mb-0">Приёмная: <b>{{ leader.phone }}</b></p>
+                    <p class="text-muted font-2 mb-0"><a href="mailto:{{ leader.email }}" class="text-secondary">{{ leader.email }}</a></p>
+                </div>
+
+                <div class="row">
+                    {% for item in employees %}
+                    <div class="col-md-6">
+                        <div class="leader bg-white px-sm-5 py-sm-5 py-4 px-4 mb-4 text-center match-height">
+                            <img src="{{ item.image_thumbnail.url }}" class="rounded-circle mb-3">
+                            <h3 class="mt-0 mb-2 h5 text-secondary">{{ item.name }}</h3>
+                            <p class="text-muted small mb-0">{{ item.role }}</p>
+                            <div class="divider my-4 mx-auto"></div>
+                            <p class="text-muted font-2 mb-0">Приёмная: <b>{{ item.phone }}</b></p>
+                            <p class="text-muted font-2 mb-0"><a href="mailto:{{ item.email }}" class="text-secondary">{{ item.email }}</a></p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</main>
+{% endblock content %}
