@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from datetime import date
+from datetime import datetime
 from django.utils.html import mark_safe
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
@@ -12,7 +12,7 @@ class News(SEO):
     title = models.CharField(max_length=250, unique=True, verbose_name='Заголовок')
     text = HTMLField(verbose_name='Текст')
     is_active = models.BooleanField(default=True, verbose_name='Показывать на сайте')
-    created_date = models.DateField(default=date.today, verbose_name='Дата публикации')
+    created_date = models.DateTimeField(default=datetime.today, verbose_name='Дата публикации')
     slug = models.SlugField(max_length=250, verbose_name='Slug', unique=True)
 
     def get_picture_url(self, filename):
@@ -52,3 +52,14 @@ class News(SEO):
 
     def __str__(self):
         return self.title
+
+
+class MainNews(models.Model):
+    news = models.ForeignKey(News, on_delete=models.CASCADE, verbose_name='Главная новость')
+
+    class Meta:
+        verbose_name = 'Главная новость'
+        verbose_name_plural = 'Главная новость'
+
+    def __str__(self):
+        return self.news.title

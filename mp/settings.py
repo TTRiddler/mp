@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'albums',
     'documents',
     'employees',
+    'contacts',
+    'feedback',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'mp.urls'
@@ -79,6 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.context_info',
             ],
         },
     },
@@ -181,6 +185,10 @@ FILEBROWSER_DIRECTORY = 'upload/'
 DIRECTORY = 'media/'
 
 SITE_ID = 1
+
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LcNnpAUAAAAAP8zDEOl2Erhj2F9bMPOjQza78Hb'
+
+EMAIL_BACKEND = 'core.backends.EmailBackend'
 
 TINYMCE_DEFAULT_CONFIG = {
     'height': 400,

@@ -4,14 +4,13 @@ from datetime import date
 from django.utils.html import mark_safe
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
-from tinymce import HTMLField
 from uuid import uuid1
 from core.models import SEO
 
 
 class Album(SEO):
     title = models.CharField(max_length=250, unique=True, verbose_name='Заголовок')
-    description = HTMLField(verbose_name='Описание')
+    description = models.TextField(verbose_name='Описание')
     is_active = models.BooleanField(default=True, verbose_name='Показывать на сайте')
     created_date = models.DateField(default=date.today, verbose_name='Дата публикации')
     slug = models.SlugField(max_length=250, verbose_name='Slug', unique=True)
@@ -24,7 +23,7 @@ class Album(SEO):
     image = models.ImageField(upload_to=get_picture_url, verbose_name='Изображение')
     
     image_thumbnail = ImageSpecField(source='image',
-                                     processors=[ResizeToFill(510, 287)],
+                                     processors=[ResizeToFill(398, 224)],
                                      format='JPEG',
                                      options={'quality': 90})
     
@@ -54,8 +53,13 @@ class ImageInAlbum(models.Model):
         return 'images/albums/{0}/{1}'.format(self.album.slug, filename)
 
     image = models.ImageField(upload_to=get_picture_url, verbose_name='Изображение')
+
+    image_big = ImageSpecField(source='image',
+                                     processors=[ResizeToFill(1920, 1080)],
+                                     format='JPEG',
+                                     options={'quality': 90})
     
-    image_thumbnail = ImageSpecField(source='image',
+    image_small = ImageSpecField(source='image',
                                      processors=[ResizeToFill(330, 186)],
                                      format='JPEG',
                                      options={'quality': 90})

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load news_extras %}
+
+{% block content %}
+<main role="main">
+    <div class="container">
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 mb-md-0">
+            <ol class="breadcrumb small">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'news' %}">События</a></li>
+                <li class="breadcrumb-item active">Новости</li>
+            </ol>
+
+
+            <div class="ya-share2 mb-3 ml-md-auto my-auto text-nowrap" data-services="vkontakte,facebook,telegram,twitter,whatsapp,skype,odnoklassniki" data-limit="3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="bg-white py-2 d-none d-lg-block">
+                    <ul class="list-unstyled side-menu m-0">
+                        <li class="border-bottom font-2"><a href="{% url 'news' %}" class="text-secondary py-2 px-3 d-block active">Новости</a></li>
+                        <li class="border-bottom font-2"><a href="{% url 'albums' %}" class="text-secondary py-2 px-3 d-block">Фотоотчёты</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <h1 class="mt-0">Новости</h1>
+                {% for item in news %}
+                <div class="news-feed-news-item bg-white d-flex flex-column flex-md-row justify-content-start align-items-stretch mb-4">
+                    <div class="mr-md-4 nfni-img" style="background-image: url('{{ item.image_small.url }}')"></div>
+                    <div class="py-4 pr-4 pl-4 pl-md-0 d-flex flex-column">
+                        <a href="{{ item.get_absolute_url }}" title="" class="h4 m-0 text-secondary stretched-link mb-md-auto mb-3 d-block">{{ item.title }}</a>
+                        <span class="d-block font-weight-bold small">{{ item.created_date|custom_date }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="d-flex justify-content-center">
+                    <nav>
+                        <ul class="pagination small">
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                            <li class="page-item"><a class="page-link" href="#">12</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+{% endblock content %}

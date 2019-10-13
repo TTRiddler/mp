@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main role="main">
+    <div class="container">
+
+       <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 mb-md-0">
+            <ol class="breadcrumb small">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'news' %}">События</a></li>
+                <li class="breadcrumb-item active">Фотоотчёты</li>
+            </ol>
+
+
+            <div class="ya-share2 mb-3 ml-md-auto my-auto text-nowrap" data-services="vkontakte,facebook,telegram,twitter,whatsapp,skype,odnoklassniki" data-limit="3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="bg-white py-2 d-none d-lg-block">
+                    <ul class="list-unstyled side-menu m-0">
+                        <li class="border-bottom font-2"><a href="{% url 'news' %}" class="text-secondary py-2 px-3 d-block">Новости</a></li>
+                        <li class="border-bottom font-2"><a href="{% url 'albums' %}" class="text-secondary py-2 px-3 d-block active">Фотоотчёты</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <h1 class="mt-0">Фотоотчёты</h1>
+                <div class="row">
+                    {% for album in albums %}
+                    <div class="col-md-6">
+                        <div class="gallery-item mb-4">
+                            <img src="{{ album.image_thumbnail.url }}" class="w-100 mb-2">
+                            <div class="px-2">
+                                <a href="{{ album.get_absolute_url }}" title="" class="stretched-link font-2 text-white bg-primary d-inline py-1">{{ album.title }}</a>
+                                <div class="clearfix mb-1"></div>
+                                <span class="bg-secondary p-1 px-2 small text-white font-weight-bold ml-n2">{{ album.created_date|date:"d.m.Y" }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="d-flex justify-content-center mt-3">
+                    <nav>
+                        <ul class="pagination small">
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                            <li class="page-item"><a class="page-link" href="#">12</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+{% endblock content %}

@@ -29,7 +29,11 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('admin/', admin.site.urls),
 
+    path('', include('core.urls')),
     path('news/', include('news.urls')),
+    path('gallery/', include('albums.urls')),
+    path('contacts/', include('contacts.urls')),
+    path('feedback/', include('feedback.urls')),
 ]
 
 

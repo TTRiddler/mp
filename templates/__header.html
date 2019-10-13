@@ -1,0 +1,78 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+    <div class="container px-sm-3 position-relative">
+        <a class="navbar-brand" href="index.html">
+            <img src="{% static 'images/logo-wide.svg' %}" alt="" class="navbar-logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="offcanvas">
+            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i><i class="fas fa-times"></i></span>
+        </button>
+
+        <div class="collapse navbar-collapse font-2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="content.html" role="button" aria-haspopup="true" aria-expanded="false">
+                        о проекте
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="content.html">миссия и история</a>
+                        <a class="dropdown-item" href="docs.html">Документы</a>
+                        <a class="dropdown-item" href="leadership.html">руководство</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="content.html" role="button" aria-haspopup="true" aria-expanded="false">
+                        участникам
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="content.html">как принять участие</a>
+                        <a class="dropdown-item" href="content.html">образовательная программа</a>
+                        <a class="dropdown-item" href="content.html">частые вопросы</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{% url 'news' %}" role="button" aria-haspopup="true" aria-expanded="false">
+                        события
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'news' %}">новости</a>
+                        <a class="dropdown-item" href="{% url 'albums' %}">фотоотчёты</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contacts' %}">контакты</a>
+                </li>
+            </ul>
+        </div>
+        <form class="search">
+            <div class="search-wrapper">
+                <input type="text" name="" placeholder="найти..." class="search-field">
+                <button type="submit" class="fas fa-search search-icon"></button>
+            </div>
+        </form>
+
+        <div class="d-lg-none offcanvas-collapse navbar-expand-lg">
+            <div class="container px-sm-4 px-0">
+                <ul class="list-unstyled">
+                    <li class="offcanvas-nav-item">
+                        <a class="offcanvas-nav-link font-2" href="content.html">о проекте</a>
+                    </li>
+                    <li class="offcanvas-nav-item">
+                        <a class="offcanvas-nav-link font-2" href="content.html">участникам</a>
+                    </li>
+                    <li class="offcanvas-nav-item">
+                        <a class="offcanvas-nav-link font-2" href="newsfeed.html">события</a>
+                    </li>
+                    <li class="offcanvas-nav-item">
+                        <a class="offcanvas-nav-link font-2" href="contacts.html">контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</nav>
