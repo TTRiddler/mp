@@ -25,8 +25,7 @@ admin.site.site_header = 'Учитель будущего'
 
 urlpatterns = [
     path('admin/filebrowser/', site.urls),
-    path('jet/', include('jet.urls')),
-    path('tinymce/', include('tinymce.urls')),
+    path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
 
     path('', include('core.urls')),

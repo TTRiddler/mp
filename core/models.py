@@ -1,5 +1,4 @@
 from django.db import models
-from tinymce import HTMLField
 
 
 class SEO(models.Model):
@@ -57,7 +56,7 @@ class Pros(models.Model):
 
 
 class ShortAbout(models.Model):
-    text = HTMLField(verbose_name='Текст')
+    text = models.TextField(verbose_name='Текст')
 
     class Meta:
         verbose_name = 'Краткое описание'

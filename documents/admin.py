@@ -6,6 +6,7 @@ class DocumentInline(admin.TabularInline):
     model = Document
     extra = 0
     fields = ('name', 'document')
+    classes = ('grp-collapse grp-closed',)
 
 
 @admin.register(DocumentCategory)
@@ -16,6 +17,7 @@ class DocumentCategoryAdmin(admin.ModelAdmin):
         }),
         ('SEO', {
             'fields': ('slug', 'seo_title', 'seo_desc', 'seo_kwrds'),
+            'classes': ('grp-collapse grp-closed',),
         }),
     )
 

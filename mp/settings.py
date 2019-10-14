@@ -33,8 +33,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'jet',
-    'imagekit',
+    'grappelli',
     'filebrowser',
 
     'django.contrib.admin',
@@ -46,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
 
-    'tinymce',
+    'imagekit',
     'core',
     'news',
     'albums',
@@ -145,42 +144,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
-JET_DEFAULT_THEME = 'default'
-
-JET_THEMES = [
-    {
-        'theme': 'default', 
-        'color': '#47bac1', 
-        'title': 'Default'
-    },
-    {
-        'theme': 'green',
-        'color': '#44b78b',
-        'title': 'Green'
-    },
-    {
-        'theme': 'light-green',
-        'color': '#2faa60',
-        'title': 'Light Green'
-    },
-    {
-        'theme': 'light-violet',
-        'color': '#a464c4',
-        'title': 'Light Violet'
-    },
-    {
-        'theme': 'light-blue',
-        'color': '#5EADDE',
-        'title': 'Light Blue'
-    },
-    {
-        'theme': 'light-gray',
-        'color': '#222',
-        'title': 'Light Gray'
-    }
-]
-
 FILEBROWSER_DIRECTORY = 'upload/'
 DIRECTORY = 'media/'
 
@@ -189,26 +152,3 @@ SITE_ID = 1
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LcNnpAUAAAAAP8zDEOl2Erhj2F9bMPOjQza78Hb'
 
 EMAIL_BACKEND = 'core.backends.EmailBackend'
-
-TINYMCE_DEFAULT_CONFIG = {
-    'height': 400,
-    'width': 'auto',
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 20,
-    'selector': 'textarea',
-    'theme': 'modern',
-    'plugins': '''
-            textcolor save link image media preview codesample contextmenu
-            table code lists fullscreen  insertdatetime  nonbreaking
-            contextmenu directionality searchreplace wordcount visualblocks
-            visualchars code fullscreen autolink lists  charmap print  hr
-            anchor ''',
-    'toolbar1': '''
-            fullscreen preview bold italic underline | fontselect,
-            fontsizeselect | alignleft alignright |
-            aligncenter alignjustify | indent outdent | table |
-            | link image media | code''',
-    'contextmenu': 'formats | link image',
-    'menubar': False,
-    'statusbar': False,
-}

@@ -26,14 +26,24 @@ class Album(SEO):
                                      processors=[ResizeToFill(398, 224)],
                                      format='JPEG',
                                      options={'quality': 90})
+
+    image_admin = ImageSpecField(source='image',
+                                 processors=[ResizeToFill(150, 150)],
+                                 format='JPEG',
+                                 options={'quality': 90})
     
     def get_absolute_url(self):
         return reverse('album', args=[self.slug])
 
     def image_tag(self):
-        return mark_safe('<a href="{0}"><img src="{0}" width="200px"></a>'.format(self.image.url))
+        return mark_safe('<a href="{0}"><img src="{0}" width="150px"></a>'.format(self.image_admin.url))
     image_tag.short_description = 'Предпросмотр изоражения'
     image_tag.allow_tags = True
+
+    def image_tag_mini(self):
+        return mark_safe('<img src="{0}" width="53px">'.format(self.image_admin.url))
+    image_tag_mini.short_description = 'Предпросмотр'
+    image_tag_mini.allow_tags = True
 
     class Meta:
         verbose_name = 'Фотоотчёт'
