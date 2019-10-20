@@ -39,7 +39,7 @@
 
                     {% for quote in page_item.quotes.all %}
                     <blockquote class="blockquote">
-                        <p>{{ quote.text }}</p>
+                        <p>{{ quote.text|striptags }}</p>
                         <footer class="blockquote-footer d-flex justify-content-start align-items-center">
                             <img src="{{ quote.image_small.url }}" class="mr-3">
                             <div>
@@ -83,7 +83,7 @@
 
                     {% for doc in page_item.documents.all %}
                     <div class="mb-4 docs narrow">
-                        <a href="{{ doc.document.url }}" target="_blank" class="pl-4 d-block mb-3 border-bottom pb-3 text-muted"><i class="far fa-file-alt text-primary mr-2 ml-n4"></i>{{ doc.title }}</a>
+                        <a href="{{ doc.document.url }}" target="_blank" class="pl-4 d-block mb-3 border-bottom pb-3 text-muted"><i class="far fa-file-alt text-primary mr-2 ml-n4"></i>{{ doc.title|striptags }}</a>
                     </div>
                     {% endfor %}
                 </article>
