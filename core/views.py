@@ -42,7 +42,7 @@ class ChangeView(View):
         main_view = request.session.get('main_view')
 
         if main_view is None:
-            request.session['main_view'] = False
+            request.session['main_view'] = True
         else:
             request.session['main_view'] = False if main_view else True
 
