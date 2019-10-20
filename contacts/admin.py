@@ -14,11 +14,4 @@ class SocialAdmin(admin.ModelAdmin):
 admin.site.register(Address)
 admin.site.register(Phone)
 admin.site.register(Email)
-
-@admin.register(MapCode)
-class MapCodeAdmin(admin.ModelAdmin):
-    class Media:
-        js = (
-            '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
-            '/static/grappelli/tinymce_setup/tinymce_setup.js',
-        )
+admin.site.register(MapCode)
