@@ -22,7 +22,7 @@ class DocumentCategory(SEO):
 
 class Document(models.Model):
     category = models.ForeignKey(DocumentCategory, on_delete=models.CASCADE, verbose_name='Категория', related_name='documents')
-    name = models.TextField(verbose_name='Название документа', unique=True)
+    name = models.TextField(verbose_name='Название документа')
 
     def get_document_url(self, filename):
         ext = filename.split('.')[-1]
