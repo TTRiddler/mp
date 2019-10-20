@@ -22,14 +22,14 @@ class DocumentCategory(SEO):
 
 class Document(models.Model):
     category = models.ForeignKey(DocumentCategory, on_delete=models.CASCADE, verbose_name='Категория', related_name='documents')
-    name = models.CharField(max_length=500, verbose_name='Название документа', unique=True)
+    name = models.TextField(verbose_name='Название документа', unique=True)
 
     def get_document_url(self, filename):
         ext = filename.split('.')[-1]
         filename = '{0}.{1}'.format(uuid1(), ext)
         return 'documents/{0}/{1}'.format(self.category.slug, filename)
 
-    document = models.FileField(upload_to=get_document_url, max_length=100, verbose_name='Файл')
+    document = models.FileField(upload_to=get_document_url, max_length=500, verbose_name='Файл')
 
     class Meta:
         verbose_name = 'Документ'

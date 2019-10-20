@@ -106,7 +106,7 @@ class NewsImage(models.Model):
 
 class NewsDocument(models.Model):
     news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='documents', verbose_name='Новость')  
-    title = models.CharField(max_length=500, verbose_name='Название документа')
+    title = models.TextField(verbose_name='Название документа')
     
     def get_document_url(self, filename):
         ext = filename.split('.')[-1]
@@ -138,7 +138,7 @@ class NewsVideo(models.Model):
 
 class NewsQuote(models.Model):
     news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='quotes', verbose_name='Новость')
-    text = models.CharField(max_length=500, verbose_name='Текст цитаты')
+    text = models.TextField(verbose_name='Текст цитаты')
     author = models.CharField(max_length=250, verbose_name='Автор цитаты')
     profession = models.CharField(max_length=250, verbose_name='Профессия автора')
 

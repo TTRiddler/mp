@@ -83,7 +83,7 @@ class PageImage(models.Model):
 
 class PageDocument(models.Model):
     page = models.ForeignKey(Page, on_delete=models.CASCADE, related_name='documents', verbose_name='Страница')  
-    title = models.CharField(max_length=500, verbose_name='Название документа')
+    title = models.TextField(verbose_name='Название документа')
     
     def get_document_url(self, filename):
         ext = filename.split('.')[-1]
@@ -115,7 +115,7 @@ class PageVideo(models.Model):
 
 class PageQuote(models.Model):
     page = models.ForeignKey(Page, on_delete=models.CASCADE, related_name='quotes', verbose_name='Страница')
-    text = models.CharField(max_length=500, verbose_name='Текст цитаты')
+    text = models.TextField(verbose_name='Текст цитаты')
     author = models.CharField(max_length=250, verbose_name='Автор цитаты')
     profession = models.CharField(max_length=250, verbose_name='Профессия автора')
 

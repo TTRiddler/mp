@@ -10,7 +10,7 @@ class Employee(models.Model):
     name = models.CharField(max_length=250, verbose_name='ФИО')
     role = models.CharField(max_length=250, verbose_name='Должность')
     phone = models.CharField(max_length=20, verbose_name='Телефон')
-    email = models.EmailField(max_length=20, verbose_name='E-mail')
+    email = models.EmailField(max_length=250, verbose_name='E-mail')
     is_active = models.BooleanField(default=True, verbose_name='Показывать на сайте')
     is_main = models.BooleanField(default=False, verbose_name='Главный')
 
