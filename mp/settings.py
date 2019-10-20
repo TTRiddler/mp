@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django.contrib.flatpages',
+
+    'mptt',
+    'django_mptt_admin',
 
     'imagekit',
     'core',
@@ -53,6 +55,7 @@ INSTALLED_APPS = [
     'employees',
     'contacts',
     'feedback',
+    'pages',
 ]
 
 MIDDLEWARE = [
@@ -63,7 +66,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'mp.urls'

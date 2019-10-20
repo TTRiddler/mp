@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    <title>{{ albums_page.seo_title }}</title>
+    <meta name="description" content="{{ albums_page.seo_desc }}">
+    <meta name="keywords" content="{{ albums_page.seo_kwrds }}">
+{% endblock title %}
+
 {% block content %}
 <main role="main">
     <div class="container">
@@ -7,7 +13,9 @@
        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 mb-md-0">
             <ol class="breadcrumb small">
                 <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-                <li class="breadcrumb-item"><a href="{% url 'news' %}">События</a></li>
+                {% with page=albums_page.parent %}
+                    <li class="breadcrumb-item"><a href="{% include '__breadcrumb.html' %}">{{ page.title }}</a></li>
+                {% endwith %}
                 <li class="breadcrumb-item active">Фотоотчёты</li>
             </ol>
 
@@ -19,8 +27,9 @@
             <div class="col-lg-3">
                 <div class="bg-white py-2 d-none d-lg-block">
                     <ul class="list-unstyled side-menu m-0">
-                        <li class="border-bottom font-2"><a href="{% url 'news' %}" class="text-secondary py-2 px-3 d-block">Новости</a></li>
-                        <li class="border-bottom font-2"><a href="{% url 'albums' %}" class="text-secondary py-2 px-3 d-block active">Фотоотчёты</a></li>
+                        {% for page in albums_page.parent.subpages %}
+                            {% include '__left_menu.html' %}
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -28,7 +37,7 @@
             <div class="col-lg-9">
                 <h1 class="mt-0">Фотоотчёты</h1>
                 <div class="row">
-                    {% for album in albums %}
+                    {% for album in page_object.object_list %}
                     <div class="col-md-6">
                         <div class="gallery-item mb-4">
                             <img src="{{ album.image_thumbnail.url }}" class="w-100 mb-2">
@@ -43,24 +52,7 @@
                 </div>
 
                 <div class="d-flex justify-content-center mt-3">
-                    <nav>
-                        <ul class="pagination small">
-                            <li class="page-item">
-                                <a class="page-link" href="#">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
-                            <li class="page-item"><a class="page-link" href="#">12</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    {% include '__pagination.html' %}
                 </div>
             </div>
         </div>

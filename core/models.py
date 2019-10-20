@@ -1,4 +1,7 @@
 from django.db import models
+from uuid import uuid1
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 
 class SEO(models.Model):
@@ -10,15 +13,21 @@ class SEO(models.Model):
         abstract = True
 
 
-class TitleTag(SEO):
-    url = models.CharField(max_length=250, verbose_name='URL')
+class Order(models.Model):
+    position = models.PositiveIntegerField(blank=True, verbose_name='Позиция')
+
+    def save(self, *args, **kwargs):
+        if self.position is None:
+            try:
+                last = self.objects.order_by('-position')[0]
+                self.position = last.position + 1
+            except:
+                self.position = 0
+        return super(Order, self).save(*args, **kwargs)
 
     class Meta:
-        verbose_name = 'SEO title'
-        verbose_name_plural = 'SEO titles'
-
-    def __str__(self):
-        return self.seo_title
+        abstract = True
+        ordering = ('position',)
 
 
 class MainTitle(models.Model):
@@ -44,26 +53,28 @@ class Goal(models.Model):
 
 
 class Pros(models.Model):
+    BG_CHOICES = (
+        ('primary', 'Красный'),
+        ('secondary', 'Синий'),
+    )
+
     title = models.CharField(max_length=250, verbose_name='Заголовок')
     text = models.TextField(verbose_name='Текст')
+    bg_color = models.CharField(max_length=250 ,choices=BG_CHOICES, verbose_name='Цвет фона')
 
+    def get_picture_url(self, filename):
+        ext = filename.split('.')[-1]
+        filename = '{0}.{1}'.format(uuid1(), ext)
+        return 'images/pros/{0}'.format(filename)
+
+    image = models.FileField(max_length=250, upload_to=get_picture_url, verbose_name='Изображение')
+    
     class Meta:
         verbose_name = 'Преимущество'
         verbose_name_plural = 'Преимущества'
 
     def __str__(self):
         return self.title
-
-
-class ShortAbout(models.Model):
-    text = models.TextField(verbose_name='Текст')
-
-    class Meta:
-        verbose_name = 'Краткое описание'
-        verbose_name_plural = 'Краткое описание'
-
-    def __str__(self):
-        return 'Краткое описание №{0}'.format(self.id)
 
 
 class ExternalLink(models.Model):

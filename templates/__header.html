@@ -11,41 +11,54 @@
 
         <div class="collapse navbar-collapse font-2">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="content.html" role="button" aria-haspopup="true" aria-expanded="false">
-                        о проекте
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="content.html">миссия и история</a>
-                        <a class="dropdown-item" href="{{ main_doc_category.get_absolute_url }}">Документы</a>
-                        <a class="dropdown-item" href="{% url 'employees' %}">руководство</a>
-                    </div>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="content.html" role="button" aria-haspopup="true" aria-expanded="false">
-                        участникам
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="content.html">как принять участие</a>
-                        <a class="dropdown-item" href="content.html">образовательная программа</a>
-                        <a class="dropdown-item" href="content.html">частые вопросы</a>
-                    </div>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="{% url 'news' %}" role="button" aria-haspopup="true" aria-expanded="false">
-                        события
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'news' %}">новости</a>
-                        <a class="dropdown-item" href="{% url 'albums' %}">фотоотчёты</a>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contacts' %}">контакты</a>
-                </li>
+                {% for page in pages %}
+                    {% if not page.parent %}
+                        {% if page.subpagescount > 0 %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="
+                                {% if page.firstchild.action == 'pages' %}
+                                    /pages/{{ page.firstchild.slug }}/
+                                {% elif page.firstchild.action == 'news' %}
+                                    /news/
+                                {% elif page.firstchild.action == 'albums' %}
+                                    /gallery/
+                                {% elif page.firstchild.action == 'documents' %}
+                                    {{ main_doc_category.get_absolute_url }}
+                                {% elif page.firstchild.action == 'employees' %}
+                                    /leadership/
+                                {% endif %}
+                            " role="button" aria-haspopup="true" aria-expanded="false">
+                                {{ page.title }}
+                            </a>
+                            <div class="dropdown-menu">
+                                {% for item in page.subpages %}
+                                    <a class="dropdown-item" href="
+                                        {% if item.action == 'pages' %}
+                                            /pages/{{ item.slug }}/
+                                        {% elif item.action == 'news' %}
+                                            /news/
+                                        {% elif item.action == 'albums' %}
+                                            /gallery/
+                                        {% elif item.action == 'documents' %}
+                                            {{ main_doc_category.get_absolute_url }}
+                                        {% elif item.action == 'employees' %}
+                                            /leadership/
+                                        {% endif %}
+                                    ">{{ item.title }}</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            {% if page.action == 'contacts' %}
+                            <a class="nav-link" href="/contacts/">{{ page.title }}</a>
+                            {% else %}
+                            <a class="nav-link" href="/pages/{{ page.slug }}/">{{ page.title }}</a>
+                            {% endif %}
+                        </li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
             </ul>
         </div>
         <form class="search">

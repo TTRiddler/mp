@@ -13,7 +13,9 @@
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 mb-md-0">
             <ol class="breadcrumb small">
                 <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-                <li class="breadcrumb-item"><a href="content.html">О проекте</a></li>
+                {% with page=doc_page.parent %}
+                    <li class="breadcrumb-item"><a href="{% include '__breadcrumb.html' %}">{{ page.title }}</a></li>
+                {% endwith %}
                 <li class="breadcrumb-item"><a href="{{ main_doc_category.get_absolute_url }}">Документы</a></li>
                 <li class="breadcrumb-item active">Локальные нормативные акты</li>
             </ol>
@@ -25,15 +27,25 @@
             <div class="col-lg-3">
                 <div class="bg-white py-2 d-none d-lg-block">
                     <ul class="list-unstyled side-menu m-0">
-                        <li class="border-bottom font-2"><a href="content.html" class="text-secondary py-2 px-3 d-block">Миссия и история</a></li>
-                        <li class="border-bottom font-2 sub"><a href="{{ main_doc_category.get_absolute_url }}" class="text-secondary py-2 px-3 d-block">Документы<i class="fas fa-angle-down"></i></a>
-                            <ul class="list-unstyled pb-3 pl-3">
-                                {% for item in document_categories %}
-                                    <li><a href="{{ item.get_absolute_url }}" class="text-muted py-2 px-3 d-block {% if item == document_category %}active{% endif %}">{{ item.title }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                        <li class="border-bottom font-2"><a href="{% url 'employees' %}" class="text-secondary py-2 px-3 d-block">Руководство</a></li>
+                        {% for page in doc_page.parent.subpages %}
+                            {% if page.action == 'pages' %}
+                            <li class="border-bottom font-2"><a href="/pages/{{ page.slug }}/" class="text-secondary py-2 px-3 d-block ">{{ page.title }}</a></li>
+                            {% elif page.action == 'news' %}
+                            <li class="border-bottom font-2"><a href="{% url 'news' %}" class="text-secondary py-2 px-3 d-block">Новости</a></li>
+                            {% elif page.action == 'albums' %}
+                            <li class="border-bottom font-2"><a href="{% url 'albums' %}" class="text-secondary py-2 px-3 d-block">Фотоотчёты</a></li>
+                            {% elif page.action == 'documents' %}
+                            <li class="border-bottom font-2 sub"><a href="{{ main_doc_category.get_absolute_url }}" class="text-secondary py-2 px-3 d-block">Документы<i class="fas fa-angle-down"></i></a>
+                                <ul class="list-unstyled pb-3 pl-3">
+                                    {% for item in document_categories %}
+                                        <li><a href="{{ item.get_absolute_url }}" class="text-muted py-2 px-3 d-block {% if item == document_category %}active{% endif %}">{{ item.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            {% elif page.action == 'employees' %}
+                            <li class="border-bottom font-2"><a href="{% url 'employees' %}" class="text-secondary py-2 px-3 d-block">Руководство</a></li>
+                            {% endif %}
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

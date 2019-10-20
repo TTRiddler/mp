@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    <title>{{ contacts_page.seo_title }}</title>
+    <meta name="description" content="{{ contacts_page.seo_desc }}">
+    <meta name="keywords" content="{{ contacts_page.seo_kwrds }}">
+{% endblock title %}
+
 {% block content %}
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <main role="main">

@@ -35,4 +35,33 @@ $(document).ready(function(){
             }
 		});
     });
+
+    $('#more_news button').click(function(e) { 
+        e.preventDefault();
+        
+        var link = $(this);
+        var page = link.data('page');
+        
+        csrf_token = $('#more_news [name="csrfmiddlewaretoken"]').val();
+        
+		data = {
+            'page': page,
+            "csrfmiddlewaretoken": csrf_token,
+        }
+
+		$.ajax({
+			type: "POST",
+			url: $('#more_news').attr('action'),
+			data: data,
+			success: function(data) {
+                if (data.has_next) {
+                    link.data('page', page+1);
+                } else {
+                  link.hide();
+                }
+                
+                $('#news').append(data.news_html);
+            }
+		});
+    });
 });

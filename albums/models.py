@@ -36,12 +36,20 @@ class Album(SEO):
         return reverse('album', args=[self.slug])
 
     def image_tag(self):
-        return mark_safe('<a href="{0}"><img src="{0}" width="150px"></a>'.format(self.image_admin.url))
+        try:
+            image_link = self.image_admin.url
+        except:
+            image_link = ''
+        return mark_safe('<a href="{0}"><img src="{0}" width="150px"></a>'.format(image_link))
     image_tag.short_description = 'Предпросмотр изоражения'
     image_tag.allow_tags = True
 
     def image_tag_mini(self):
-        return mark_safe('<img src="{0}" width="53px">'.format(self.image_admin.url))
+        try:
+            image_link = self.image_admin.url
+        except:
+            image_link = ''
+        return mark_safe('<img src="{0}" width="53px">'.format(image_link))
     image_tag_mini.short_description = 'Предпросмотр'
     image_tag_mini.allow_tags = True
 

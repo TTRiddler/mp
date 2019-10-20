@@ -35,6 +35,7 @@ urlpatterns = [
     path('feedback/', include('feedback.urls')),
     path('documents/', include('documents.urls')),
     path('leadership/', include('employees.urls')),
+    path('pages/', include('pages.urls')),
 ]
 
 

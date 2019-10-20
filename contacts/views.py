@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from contacts.models import Schedule, MapCode, Phone, Address, Email
 from feedback.forms import FeedBackForm
+from pages.models import Page
 
 
 class ContactsView(View):
@@ -14,6 +15,8 @@ class ContactsView(View):
 
         feedback_form = FeedBackForm()
 
+        contacts_page = Page.objects.filter(is_active=True, action='contacts').first()
+
         context = {
             'map_code': map_code,
             'shedule': shedule,
@@ -21,6 +24,7 @@ class ContactsView(View):
             'addresses': addresses,
             'emails': emails,
             'feedback_form': feedback_form,
+            'contacts_page': contacts_page,
         }
 
         return render(request, 'contacts/contacts.html', context)

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from employees.models import Employee
+from pages.models import Page
 
 
 class EmployeesView(View):
@@ -8,10 +9,12 @@ class EmployeesView(View):
         active_employees = Employee.objects.filter(is_active=True)
         leader = active_employees.filter(is_main=True).first()
         employees = active_employees.exclude(id=leader.id)
+        emp_page = Page.objects.filter(is_active=True, action='employees').first()
 
         context = {
             'employees': employees,
-            'leader': leader
+            'leader': leader,
+            'emp_page': emp_page,
         }
 
         return render(request, 'employees/employees.html', context)

@@ -1,0 +1,11 @@
+{% if page.firstchild.action == 'pages' %}
+    /pages/{{ page.firstchild.slug }}/
+{% elif page.firstchild.action == 'news' %}
+    /news/
+{% elif page.firstchild.action == 'albums' %}
+    /gallery/
+{% elif page.firstchild.action == 'documents' %}
+    {{ main_doc_category.get_absolute_url }}
+{% elif page.firstchild.action == 'employees' %}
+    /leadership/
+{% endif %}

@@ -60,6 +60,7 @@ class Schedule(models.Model):
 class Social(models.Model):
     name = models.CharField(max_length=250, verbose_name='Название социальной сети')
     short_name = models.CharField(max_length=250, verbose_name='Короткое название')
+    color = models.CharField(max_length=250, verbose_name='Цвет обрамления')
     link = models.URLField(max_length=250, verbose_name='Ссылка')
 
     class Meta:
