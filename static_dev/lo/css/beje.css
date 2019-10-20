@@ -1,0 +1,71 @@
+body.color4 {
+    background:#f7f3d6;
+    color:#59422e
+}
+.color4	.hl{background:#59422e;color:#f7f3d6;padding:1px 2px;}
+.color4 a,.color4 .published,.color4 .cat,.color4 .search .hentry .nom{color:#7e634b;}
+.color4 .subnav li a:hover span {background:#ede3a1}
+.color4 .gnav li a,.color4 .subnav li a,.color4 .subnav li a.here,.color4 .switch_version a,.color4 .hentry h2 a,.color4 .pagi a,.color4 .access,.color4 .goup a,.color4 .closeme a,.color4 .pop dd li a,.color4 .lica td a {color:#59422e}
+.color4 .gnav li a.here{background:#59422e; color: #f7f3d6}
+
+.color4 .subnav li a.here span{background:#59422e;color:#f7f3d6}
+.color4 .subnav li a:hover,.color4 .search1 .here,.color4 .search2 .here{color:#59422e;}
+
+.color4 .gnav li a.here,.color4 .letter .note {border-color:#555;}	
+.color4  .nav{border-color:#333;}
+.color4 .footer,.color4 .related,.color4 .lica th,.color4 .lica td {border-color:#59422e}
+.color4 .inp,.color4 .letter textarea{border-color:#59422e;background:#f7f3d6;color:#59422e}
+
+.color4 .a-fontsize dt, .color4 .access dt, .color4 .access a {text-shadow:none}
+.color4  .subnav li a:hover span {text-shadow:none;}
+
+.color4 .last a,.color4 .search .row a{background:#59422e;border-color: #59422e;}
+.color4 .last a span,.color4  .search .row a span{border-color:#f7f3d6;color:#f7f3d6;background-image:url(/static/lo/img/access/och_send.png);}
+.color4 .pop dt.opened{color:#f7f3d6;border-color:#59422e;background:#59422e;}
+
+
+.color4 .popped{border-color:#59422e;background:#f7f3d6;color:#59422e;}
+.color4 .popped a,.color4 .access .popped a {color:#59422e}
+.color4 #out .font-family, .color4  #out .letter-spacing{color:#59422e;border-color:#59422e}
+.color4 #out .here.font-family,.color4 #out .here.letter-spacing,.color4.spacing-small #out #spacing-small,.color4.spacing-normal #out #spacing-normal,.color4.spacing-big #out  #spacing-big,.color4.serif #out  #serif,.color4.sans-serif #out #sans-serif{color:#f7f3d6;background:#59422e}
+.color4 #out .saveit a{background:#59422e;border-color:#59422e}
+.color4 .saveit a span{border-color:#f7f3d6;color:#f7f3d6}
+
+
+
+.color4 .popg dd p{background-image:url(/static/lo/img/access/och_dash.png)}
+.color4 .closeme a{background-image:url(/static/lo/img/access/och_closeme.png)}
+.color4 .pop dd p.gos-addr{background-image:url(/static/lo/img/access/och_gos-addr.png)}
+.color4 .pop dd p.gos-phone{background-image:url(/static/lo/img/access/och_gos-phone.png)}
+.color4 .goup a{background-image: url(/static/lo/img/access/och_up.png);}
+.color4 .pop dt.opened{background:#59422e url(/static/lo/img/access/och_arrb.png) no-repeat 12px 50%;}
+.color4 .pop dt{background-image:url(/static/lo/img/access/och_arrr.png)}
+.color4 .pagi a:hover span{border-color:#f7f3d6;background:#e7e3c6}
+.color4 .pagi a.here span{background:#59422e;border-color:#59422e;color:#f7f3d6}
+.color4 .pagi a.here{background-image:url(/static/lo/img/access/och_arr.png)}
+.color4  .header h1 a span{background-image:url(/static/lo/img/access/och_president.png)}
+.color4  .header h1 a span.eng{background-image:url(/static/lo/img/access/eng/ochra.png)}
+/*.color4 .gnav{background-image:url(/static/lo/img/access/och_dot3.png)}*/
+.color4 .switch_version a{background-image:url(/static/lo/img/access/och_normal.png)}
+.color4 .access{background-image:url(/static/lo/img/access/och_access.png)}
+.color4 .subnav li a.here{background-image:url(/static/lo/img/access/och_arr.png)}
+.color4 .copy  .what{background-image:url(/static/lo/img/access/och_gerb.png)}
+.color4 .a-fontsize a{background-image:url(/static/lo/img/access/och_fontsize.png);}
+.color4 .a-colors a{background-image:url(/static/lo/img/access/och_colors.png)}
+.color4 .eng .a-colors a{background-image:url(/static/lo/img/access/eng/colors.png)}
+.color4 .a-images a{background-image:url(/static/lo/img/access/och_images.png)}
+.color4 .eng .a-images a{background-image:url(/static/lo/img/access/eng/och_images.png)}
+.color4 .a-search{background-image:url(/static/lo/img/access/och_a-search.png)}
+.color4 .a-settings{background-image:url(/static/lo/img/access/och_a-settings.png);}
+.color4 .printversion a{background-image:url(/static/lo/img/access/och_print.png);}
+.color4 .access dt, .color4 .a-search a,.color4 .a-settings a{
+    color:#f7f3d6
+}
+.color4 .pop dt, .color4 .copy,.color4 .searchresult,.color4 .pagi a span,.color4 .pagi a:hover span{
+    border-color:#7e634b;
+}
+.color4 .search1 .here,.color4 .search2 .here {
+    background:#59422E;
+    text-shadow:none;
+    color:#f7f3d6;
+}

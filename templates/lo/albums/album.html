@@ -1,0 +1,27 @@
+{% extends 'lo/base.html' %}
+
+{% block title %}
+    <title>{{ album.seo_title }}</title>
+    <meta name="description" content="{{ album.seo_desc }}">
+    <meta name="keywords" content="{{ album.seo_kwrds }}">
+{% endblock title %}
+
+{% block subnav %}
+{% for page in albums_page.parent.subpages %}
+    {% include 'lo/__left_menu.html' %}
+{% endfor %}
+{% endblock %}
+
+{% block content %}
+<div class="page">
+    <h1>{{ album.title }}</h1><br>
+
+    <div class="hentry">
+        <p>{{ album.description }}</p><br><br>
+        {% for item in album.images.all %}
+            <img src="{{ item.image_small.url }}" itemprop="thumbnail" alt="...">
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock content %}

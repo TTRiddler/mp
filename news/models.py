@@ -15,6 +15,7 @@ class News(SEO):
     body3 = models.TextField(verbose_name='Текст новости #3', null=True, blank=True)
     is_active = models.BooleanField(default=True, verbose_name='Показывать на сайте')
     is_main = models.BooleanField(default=False, verbose_name='Главная новость')
+    in_main_menu = models.BooleanField(default=False, verbose_name='Отображать в блоке "главное"')
     created_date = models.DateTimeField(default=datetime.today, verbose_name='Дата публикации')
     slug = models.SlugField(max_length=250, verbose_name='Slug', unique=True)
 

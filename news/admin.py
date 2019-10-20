@@ -34,7 +34,7 @@ class NewsVideoInline(admin.TabularInline):
 class NewsAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ('title', 'body1', 'body2', 'body3', 'is_active', 'is_main', 'created_date', 'image', 'image_tag')
+            'fields': ('title', 'body1', 'body2', 'body3', 'is_active', 'is_main', 'in_main_menu', 'created_date', 'image', 'image_tag')
         }),
         ('SEO', {
             'fields': ('slug', 'seo_title', 'seo_desc', 'seo_kwrds'),
@@ -44,9 +44,9 @@ class NewsAdmin(admin.ModelAdmin):
 
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('image_tag',)
-    list_display = ('image_tag_mini', 'title', 'created_date', 'is_active', 'is_main')
-    list_editable = ('is_active', 'is_main')
-    list_filter = ('is_active', 'is_main')
+    list_display = ('image_tag_mini', 'title', 'created_date', 'is_active', 'is_main', 'in_main_menu')
+    list_editable = ('is_active', 'is_main', 'in_main_menu')
+    list_filter = ('is_active', 'is_main', 'in_main_menu')
     search_fields = ('title', 'body1', 'body2', 'body3',)
 
     class Media:

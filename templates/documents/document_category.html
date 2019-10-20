@@ -17,7 +17,7 @@
                     <li class="breadcrumb-item"><a href="{% include '__breadcrumb.html' %}">{{ page.title }}</a></li>
                 {% endwith %}
                 <li class="breadcrumb-item"><a href="{{ main_doc_category.get_absolute_url }}">Документы</a></li>
-                <li class="breadcrumb-item active">Локальные нормативные акты</li>
+                <li class="breadcrumb-item active">{{ document_category.title }}</li>
             </ol>
 
             <div class="ya-share2 mb-3 ml-md-auto my-auto text-nowrap" data-services="vkontakte,facebook,telegram,twitter,whatsapp,skype,odnoklassniki" data-limit="3"></div>

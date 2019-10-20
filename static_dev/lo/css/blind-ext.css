@@ -1,0 +1,16 @@
+#letter-form legend {
+    display: block;
+    font-family: Georgia,serif;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.text_only {
+   height: 1px;
+   left: -10000px;
+   overflow: hidden;
+   position: absolute;
+   top: auto;
+   width: 1px;
+}

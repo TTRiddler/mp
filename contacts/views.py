@@ -27,4 +27,5 @@ class ContactsView(View):
             'contacts_page': contacts_page,
         }
 
-        return render(request, 'contacts/contacts.html', context)
+        lo = '' if request.session.get('main_view') else 'lo/'
+        return render(request, lo + 'contacts/contacts.html', context)

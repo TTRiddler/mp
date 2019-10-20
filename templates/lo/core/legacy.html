@@ -1,0 +1,19 @@
+{% extends 'lo/base.html' %}
+
+{% block title %}
+    <title>{{ legacy.seo_title }}</title>
+    <meta name="description" content="{{ legacy.seo_desc }}">
+    <meta name="keywords" content="{{ legacy.seo_kwrds }}">
+{% endblock title %}
+
+{% block subnav %}
+{% endblock %}
+
+{% block content %}
+<div class="page">
+    <h1>Обработка персональных данных</h1><br>
+    <div class="hentry">
+        {{ legacy.text|safe }}
+    </div>
+</div>
+{% endblock content %}

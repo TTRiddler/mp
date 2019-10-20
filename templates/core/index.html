@@ -22,7 +22,7 @@
         </div>
 
         <div class="col-lg-3">
-            <a class="btn btn-dark btn-block" href="#" role="button">версия для слабовидящих</a>
+            <a class="btn btn-dark btn-block" href="{% url 'change_view' %}" role="button">версия для слабовидящих</a>
         </div>
     </div>
 
@@ -40,22 +40,12 @@
         <div class="col-xl-3">
             <div class="side-feed bg-white px-4 py-3">
                 <h2 class="h4 mt-0 mb-3">главное</h2>
-
+                {% for item in main_menu_news %}
                 <div class="side-feed-item pb-3 mb-3">
-                    <a href="article.html" title="" class="text-secondary font-2 d-block">Сначала уроки, потом компьютер: почему запрещать игры детям — большая ошибка</a>
-                    <span class="d-block">сегодня 17:01</span>
+                    <a href="{{ item.get_absolute_url }}" title="" class="text-secondary font-2 d-block">{{ item.title }}</a>
+                    <span class="d-block">{{ item.created_date|custom_date }}</span>
                 </div>
-
-                <div class="side-feed-item pb-3 mb-3">
-                    <a href="article.html" title="" class="text-secondary font-2 d-block">Как интернет меняет образование? Отвечает CEO сервиса Coursera</a>
-                    <span class="d-block">сегодня 10:34</span>
-                </div>
-
-                <div class="side-feed-item pb-3 mb-3">
-                    <a href="article.html" title="" class="text-secondary font-2 d-block">Нейроученый — о том, как старые теории и новые технологии помогают учить детей математике</a>
-                    <span class="d-block">вчера 19:17</span>
-                </div>
-
+                {% endfor %}
                 <div class="side-feed-more d-flex justify-content-center align-items-end pb-3">
                     <a href="{% url 'news' %}" title="" class="font-2 font-weight-bold">все новости</a>
                 </div>

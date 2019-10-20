@@ -23,7 +23,8 @@ class AlbumsView(View):
             'prev_url': prev_url,
         }
 
-        return render(request, 'albums/albums.html', context)
+        lo = '' if request.session.get('main_view') else 'lo/'
+        return render(request, lo + 'albums/albums.html', context)
 
 
 class AlbumView(View):
@@ -36,4 +37,5 @@ class AlbumView(View):
             'albums_page': albums_page,
         }
 
-        return render(request, 'albums/album.html', context)
+        lo = '' if request.session.get('main_view') else 'lo/'
+        return render(request, lo + 'albums/album.html', context)

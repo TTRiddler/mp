@@ -13,6 +13,8 @@ def context_info(request):
 
     pages = Page.objects.filter(is_active=True).exclude(action='home')
 
+    all_docs = DocumentCategory.objects.filter(is_active=True)
+
     context = {
         'phone': phone,
         'address': address,
@@ -20,6 +22,7 @@ def context_info(request):
         'socials': socials,
         'main_doc_category': main_doc_category,
         'pages': pages,
+        'all_docs': all_docs,
     }
 
     return context

@@ -17,4 +17,5 @@ class EmployeesView(View):
             'emp_page': emp_page,
         }
 
-        return render(request, 'employees/employees.html', context)
+        lo = '' if request.session.get('main_view') else 'lo/'
+        return render(request, lo + 'employees/employees.html', context)

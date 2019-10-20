@@ -1,0 +1,74 @@
+body.color5 {
+    background:#3b2716;
+    color:#a9dd38
+}
+.color5 .hl{background:#a9dd38;color:#3b2716;padding:1px 2px;}
+.color5 a,.color5 .published,.color5 .cat,.color5 .search .hentry .nom{color:#a9dd38;}
+.color5 .tags a:hover{
+    background:#51431d;
+    text-shadow:none;
+}
+
+.color5 .subnav li a:hover span {background:#51431d;color:#a9dd38;}
+.color5 .gnav li a,.color5 .subnav li a,.color5 .subnav li a.here,.color5 .switch_version a,.color5 .hentry h2 a,.color5 .pagi a,.color5 .access,.color5 .goup a,.color5 .closeme a,.color5 .pop dd li a,.color5 .lica td a {color:#a9dd38}
+/*.color5 .gnav li a.here{background:#3b2716}*/
+.color5  .copy .url{color:#a9dd38}
+.color5 .gnav li a.here,
+.color5 .subnav li a.here span{background:#a9dd38;color:#3b2716}
+.color5 .subnav li a:hover,.color5 .search1 .here,.color5 .search2 .here{color:#3b2716;}
+
+.color5 .gnav li a.here,.color5 .letter .note {border-color:#555;}	
+.color5  .nav{border-color:#a9dd38;}
+.color5 .footer,.color5 .related,.color5 .lica th,.color5 .lica td {border-color:#a9dd38}
+.color5 .inp,.color5 .letter textarea{border-color:#a9dd38;background:#3b2716;color:#a9dd38}
+
+.color5.a-fontsize dt, .color5 .access dt, .color5 .access a {text-shadow:none}
+.color5  .subnav li a:hover span {text-shadow:none;}
+
+.color5 .last a,.color5 .search .row a{background:#a9dd38;border-color: #a9dd38;}
+.color5 .last a span,.color5  .search .row a span{border-color:#3b2716;color:#3b2716;background-image:url(/static/lo/img/access/brown_send.png);}
+.color5 .pop dt.opened{color:#3b2716;border-color:#a9dd38;background:#a9dd38;}
+
+
+.color5 .popped{border-color:#a9dd38;background:#3b2716;color:#a9dd38;}
+.color5 .popped a,.color5 .access .popped a {color:#a9dd38}
+.color5 #out .font-family, .color5  #out .letter-spacing{color:#a9dd38;border-color:#a9dd38}
+.color5 #out .here.font-family,.color5 #out .here.letter-spacing,.color5.spacing-small #out #spacing-small,.color5.spacing-normal #out #spacing-normal,.color5.spacing-big #out  #spacing-big,.color5.serif #out  #serif,.color5.sans-serif #out #sans-serif{color:#3b2716;background:#a9dd38}
+.color5 #out .saveit a{background:#a9dd38;border-color:#a9dd38}
+.color5 .saveit a span{border-color:#3b2716;color:#3b2716}
+
+.color5 .popg dd p{background-image:url(/static/lo/img/access/brown_dash.png)}
+.color5 .closeme a{background-image:url(/static/lo/img/access/brown_closeme.png)}
+.color5 .pop dd p.gos-addr{background-image:url(/static/lo/img/access/brown_gos-addr.png)}
+.color5 .pop dd p.gos-phone{background-image:url(/static/lo/img/access/brown_gos-phone.png)}
+.color5 .goup a{background-image: url(/static/lo/img/access/brown_up.png);}
+.color5 .pop dt.opened{background:#a9dd38 url(/static/lo/img/access/brown_arrb.png) no-repeat 12px 50%;}
+.color5 .pop dt{background-image:url(/static/lo/img/access/brown_arrr.png)}
+.color5 .pagi a:hover span{border-color:#a9dd38;background:#51431d}
+.color5 .pagi a.here span{background:#a9dd38;border-color:#a9dd38;color:#3b2716}
+.color5 .pagi a.here{background-image:url(/static/lo/img/access/brown_arr.png)}
+.color5  .header h1 a span{background-image:url(/static/lo/img/access/brown_president.png)}
+.color5  .header h1 a span.eng{background-image:url(/static/lo/img/access/eng/blown.png)}
+/*.color5 .gnav{background-image:url(/static/lo/img/access/brown_dot3.png)}*/
+.color5 .switch_version a{background-image:url(/static/lo/img/access/brown_normal.png)}
+.color5 .access{background-image:url(/static/lo/img/access/brown_access.png)}
+.color5 .subnav li a.here{background-image:url(/static/lo/img/access/s/brown_arr.png)}
+.color5 .copy  .what{background-image:url(/static/lo/img/access/brown_gerb.png)}
+.color5 .a-fontsize a{background-image:url(/static/lo/img/access/brown_fontsize.png);}
+.color5 .a-colors a{background-image:url(/static/lo/img/access/brown_colors.png)}
+.color5 .eng .a-colors a{background-image:url(/static/lo/img/access/eng/colors.png)}
+.color5 .a-images a{background-image:url(/static/lo/img/access/brown_images.png)}
+.color5 .eng .a-images a{background-image:url(/static/lo/img/access/eng/brown_images.png)}
+.color5 .a-search{background-image:url(/static/lo/img/access/brown_a-search.png)}
+.color5 .a-settings{background-image:url(/static/lo/img/access/brown_a-settings.png);}
+.color5 .printversion a{background-image:url(/static/lo/img/access/brown_print.png);}
+
+.color5 .pop dt, .color5 .copy,.color5 .searchresult,.color5 .pagi a span,.color5 .pagi a:hover span{
+    border-color:#a9dd38;
+}
+.color5.search1 .here,.color5 .search2 .here {
+    background:#a9dd38;
+    text-shadow:none;
+    color:#3b2716;
+}
+.color5 .pagi a:hover span {text-shadow:none;}

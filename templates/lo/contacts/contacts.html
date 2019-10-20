@@ -1,0 +1,90 @@
+{% extends 'lo/base.html' %}
+
+{% block title %}
+    <title>{{ contacts_page.seo_title }}</title>
+    <meta name="description" content="{{ contacts_page.seo_desc }}">
+    <meta name="keywords" content="{{ contacts_page.seo_kwrds }}">
+{% endblock title %}
+
+{% block content %}
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+
+<div class="page">
+    <h1>Контакты</h1><br>
+
+    <div class="hentry">
+        <p><b>приёмная</b></p>
+        {% for item in phones %}
+            {{ item.phone }} <br>
+        {% endfor %}
+        <br>
+
+        <p><b>адрес</b></p>
+        {% for item in addresses %}
+            {{ item.address }} <br>
+        {% endfor %}
+        <br>
+
+        <p><b>почта</b></p>
+        {% for item in emails %}
+        <a href="mailto:{{ item.email }}">{{ item.email }}</a><br>
+        {% endfor %}
+        <br>
+
+        <p><b>график работы</b></p>
+        {% for item in shedule %}
+        {{ item.days_point }}: <b>{{ item.time_point }}</b><br>
+        {% endfor %}
+        </br>
+
+        <div>
+            {{ map_code|safe }}
+        </div>
+
+    </div>
+
+
+    <div class="hentry">
+        <form id="FeedBackForm" method="POST" action = "{% url 'feedback' %}">
+            {% csrf_token %}
+            <div>
+                {{ feedback_form.name }}
+            </div><br>
+
+            <div>
+                {{ feedback_form.email }}
+            </div><br>
+
+            <div>
+                {{ feedback_form.text }}
+            </div><br>
+
+            {% include '__recaptcha.html' %}
+            <br>
+
+            <button class="inp" type="submit">Отправить</button>
+        </form>
+
+        <div class="email-error alert alert-danger alert-dismissible fade show d-none" role="alert">
+            <strong>Произошла ошибка! </strong>Обновите страницу и попробуйте ещё раз.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="modal-footer pb-0 px-0">
+            <p class="text-muted small m-0">Нажимая кнопку "<i class="fas fa-paper-plane fa-xs mr-1"></i>отправить", вы даёте согласие на <a href="{% url 'legacy' %}" target="_blank">обработку персональных данных</a></p>
+        </div>
+        
+        <div class="modal-success d-none justify-content-center align-items-center">
+            <div class="text-center">
+                <i class="far fa-check-circle fa-5x text-secondary mb-4"></i>
+                <h3 class="h5 mb-1 mt-0">Спасибо за ваше сообщение!</h3>
+                <p class="text-muted small">Мы получили его, и скоро ответим на указанную Вами почту.</p>
+                <button type="button" class="btn btn-primary font-2" data-dismiss="modal" aria-label="Закрыть окно"><i class="fas fa-times fa-xs mr-2"></i>закрыть окно</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

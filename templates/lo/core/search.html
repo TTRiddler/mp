@@ -1,0 +1,54 @@
+{% extends 'lo/base.html' %}
+{% load news_extras %}
+
+{% block title %}
+    <title>Результаты поиска</title>
+    <meta name="description" content="Отображаются результаты поиска">
+    <meta name="keywords" content="результаты, поиск">
+{% endblock title %}
+
+{% block subnav %}
+{% endblock %}
+
+{% block content %}
+<div class="page">
+    <h1>Результаты поиска</h1><br>
+
+    <div class="hentry">
+    {% if q_pages %}
+        <h3>Страницы</h3><br>
+        {% for item in q_pages %}
+        <a href="/pages/{{ item.slug }}/" title="">{{ item.title }}</a><br><br>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+    <div class="hentry">
+    {% if q_news %}
+        <h3>Новости</h3><br>
+        {% for item in q_news %}
+        <a href="{{ item.get_absolute_url }}" title="">{{ item.title }}</a><br><br>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+    <div class="hentry">
+    {% if q_albums %}
+        <h3>Фотоотчёты</h3><br>
+        {% for item in q_albums %}
+        <a href="{{ item.get_absolute_url }}" title="">{{ item.title }}</a><br><br>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+    <div class="hentry">
+    {% if q_documents %}
+        <h3>Документы</h3><br>
+        {% for item in q_documents %}
+        <a href="{{ item.document.url }}" target="_blank" title="">{{ item.name }}</a><br><br>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+</div>
+{% endblock content %}

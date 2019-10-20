@@ -15,7 +15,11 @@
                     {% if not page.parent %}
                         {% if page.subpagescount > 0 %}
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="
+                            <a class="nav-link dropdown-toggle 
+                            {% for item in page.subpages %}
+                                {% if item.slug in request.path %}active{% endif %}
+                            {% endfor %}
+                            " href="
                                 {% if page.firstchild.action == 'pages' %}
                                     /pages/{{ page.firstchild.slug }}/
                                 {% elif page.firstchild.action == 'news' %}
@@ -51,9 +55,9 @@
                         {% else %}
                         <li class="nav-item">
                             {% if page.action == 'contacts' %}
-                            <a class="nav-link" href="/contacts/">{{ page.title }}</a>
+                            <a class="nav-link {% if 'contacts' in request.path %}active{% endif %}" href="/contacts/">{{ page.title }}</a>
                             {% else %}
-                            <a class="nav-link" href="/pages/{{ page.slug }}/">{{ page.title }}</a>
+                            <a class="nav-link {% if page.slug in request.path %}active{% endif %}" href="/pages/{{ page.slug }}/">{{ page.title }}</a>
                             {% endif %}
                         </li>
                         {% endif %}
@@ -61,9 +65,9 @@
                 {% endfor %}
             </ul>
         </div>
-        <form class="search">
+        <form class="search" action="{% url 'search' %}">
             <div class="search-wrapper">
-                <input type="text" name="" placeholder="найти..." class="search-field">
+                <input type="text" name="query" placeholder="найти..." class="search-field">
                 <button type="submit" class="fas fa-search search-icon"></button>
             </div>
         </form>
@@ -71,18 +75,65 @@
         <div class="d-lg-none offcanvas-collapse navbar-expand-lg">
             <div class="container px-sm-4 px-0">
                 <ul class="list-unstyled">
-                    <li class="offcanvas-nav-item">
-                        <a class="offcanvas-nav-link font-2" href="content.html">о проекте</a>
-                    </li>
-                    <li class="offcanvas-nav-item">
-                        <a class="offcanvas-nav-link font-2" href="content.html">участникам</a>
-                    </li>
-                    <li class="offcanvas-nav-item">
-                        <a class="offcanvas-nav-link font-2" href="newsfeed.html">события</a>
-                    </li>
-                    <li class="offcanvas-nav-item">
-                        <a class="offcanvas-nav-link font-2" href="contacts.html">контакты</a>
-                    </li>
+                    {% for page in pages %}
+                        {% if not page.parent %}
+                            {% if page.subpagescount > 0 %}
+                            <li class="offcanvas-nav-item">
+                                <a class="offcanvas-nav-link font-2" href="
+                                    {% if page.firstchild.action == 'pages' %}
+                                        /pages/{{ page.firstchild.slug }}/
+                                    {% elif page.firstchild.action == 'news' %}
+                                        /news/
+                                    {% elif page.firstchild.action == 'albums' %}
+                                        /gallery/
+                                    {% elif page.firstchild.action == 'documents' %}
+                                        {{ main_doc_category.get_absolute_url }}
+                                    {% elif page.firstchild.action == 'employees' %}
+                                        /leadership/
+                                    {% endif %}
+                                ">{{ page.title }}</a>
+                                <ul class="list-unstyled">
+                                    {% for item in page.subpages %}
+                                    <li class="offcanvas-nav-item">
+                                        <a class="offcanvas-nav-link font-2 {% if item.slug in request.path%}active{% endif %}" href="
+                                            {% if item.action == 'pages' %}
+                                                /pages/{{ item.slug }}/
+                                            {% elif item.action == 'news' %}
+                                                /news/
+                                            {% elif item.action == 'albums' %}
+                                                /gallery/
+                                            {% elif item.action == 'documents' %}
+                                                {{ main_doc_category.get_absolute_url }}
+                                            {% elif item.action == 'employees' %}
+                                                /leadership/
+                                            {% endif %}
+                                        ">{{ item.title }}</a>
+                                        {% if item.action == 'documents' %}
+                                        <ul class="list-unstyled">
+                                            {% for doc in all_docs %}
+                                            <li class="offcanvas-nav-item">
+                                                <a class="offcanvas-nav-link font-2 {% if doc.slug in request.path%}active{% endif %}" href="{{ doc.get_absolute_url }}">{{ doc.title }}</a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            {% else %}
+                                {% if page.action == 'contacts' %}
+                                <li class="offcanvas-nav-item">
+                                    <a class="offcanvas-nav-link font-2" href="/contacts/">{{ page.title }}</a>
+                                </li>
+                                {% else %}
+                                <li class="offcanvas-nav-item">
+                                    <a class="offcanvas-nav-link font-2" href="/pages/{{ page.slug }}/">{{ page.title }}</a>
+                                </li>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                 </ul>
             </div>
         </div>

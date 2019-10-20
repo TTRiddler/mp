@@ -1,0 +1,13 @@
+{% if page.action == 'pages' %}
+<li><a href="/pages/{{ page.slug }}/" class="{% if page.slug in request.path %}here{% endif %}"><span>{{ page.title }}</span></a></li>
+{% elif page.action == 'news' %}
+<li><a href="{% url 'news' %}" class="{% if page.slug in request.path %}here{% endif %}"><span>{{ page.title }}</span></a></li>
+{% elif page.action == 'albums' %}
+<li><a href="{% url 'albums' %}" class="{% if page.slug in request.path %}here{% endif %}"><span>{{ page.title }}</span></a></li>
+{% elif page.action == 'documents' %}
+<li>
+    <a href="{{ main_doc_category.get_absolute_url }}" class="{% if page.slug in request.path %}here{% endif %}"><span>{{ page.title }}</span></a>
+</li>
+{% elif page.action == 'employees' %}
+<li><a href="{% url 'employees' %}" class="{% if page.slug in request.path %}here{% endif %}"><span>{{ page.title }}</span></a></li>
+{% endif %}

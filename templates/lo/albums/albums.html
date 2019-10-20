@@ -1,0 +1,32 @@
+{% extends 'lo/base.html' %}
+
+{% block title %}
+    <title>{{ albums_page.seo_title }}</title>
+    <meta name="description" content="{{ albums_page.seo_desc }}">
+    <meta name="keywords" content="{{ albums_page.seo_kwrds }}">
+{% endblock title %}
+
+{% block subnav %}
+{% for page in albums_page.parent.subpages %}
+    {% include 'lo/__left_menu.html' %}
+{% endfor %}
+{% endblock %}
+
+{% block content %}
+<div class="page">
+    <h1>Фотоотчёты</h1><br>
+    <div class="hentry photo-flex">
+        {% for item in page_object.object_list %}
+        <div>
+            <a href="{{ item.get_absolute_url }}"><img src="{{ item.image_thumbnail.url }}"></a>
+            <h2><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h2>
+            <p class="published">{{ item.created_date|date:"d.m.Y" }}</p>
+        </div><br>
+        {% endfor %}
+    </div>
+
+    <div>
+        {% include 'lo/__pagination.html' %}
+    </div>
+</div>
+{% endblock content %}

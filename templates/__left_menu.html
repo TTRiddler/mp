@@ -1,11 +1,11 @@
 {% if page.action == 'pages' %}
 <li class="border-bottom font-2"><a href="/pages/{{ page.slug }}/" class="text-secondary py-2 px-3 d-block ">{{ page.title }}</a></li>
 {% elif page.action == 'news' %}
-<li class="border-bottom font-2"><a href="{% url 'news' %}" class="text-secondary py-2 px-3 d-block">Новости</a></li>
+<li class="border-bottom font-2"><a href="{% url 'news' %}" class="text-secondary py-2 px-3 d-block">{{ page.title }}</a></li>
 {% elif page.action == 'albums' %}
-<li class="border-bottom font-2"><a href="{% url 'albums' %}" class="text-secondary py-2 px-3 d-block">Фотоотчёты</a></li>
+<li class="border-bottom font-2"><a href="{% url 'albums' %}" class="text-secondary py-2 px-3 d-block">{{ page.title }}</a></li>
 {% elif page.action == 'documents' %}
-<li class="border-bottom font-2 sub"><a href="{{ main_doc_category.get_absolute_url }}" class="text-secondary py-2 px-3 d-block">Документы<i class="fas fa-angle-down"></i></a></li>
+<li class="border-bottom font-2 sub"><a href="{{ main_doc_category.get_absolute_url }}" class="text-secondary py-2 px-3 d-block">{{ page.title }}<i class="fas fa-angle-down"></i></a></li>
 {% elif page.action == 'employees' %}
-<li class="border-bottom font-2"><a href="{% url 'employees' %}" class="text-secondary py-2 px-3 d-block">Руководство</a></li>
+<li class="border-bottom font-2"><a href="{% url 'employees' %}" class="text-secondary py-2 px-3 d-block">{{ page.title }}</a></li>
 {% endif %}

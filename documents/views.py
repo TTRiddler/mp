@@ -16,4 +16,5 @@ class DocumentCategoryView(View):
             'doc_page': doc_page,
         }
 
-        return render(request, 'documents/document_category.html', context)
+        lo = '' if request.session.get('main_view') else 'lo/'
+        return render(request, lo + 'documents/document_category.html', context)

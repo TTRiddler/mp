@@ -1,0 +1,12 @@
+/*
+-----------------------------------------------
+Site Layout Styles
+----------------------------------------------- */
+body{
+	text-align:center;
+	}
+	#out{
+		margin:0 auto;
+		text-align:left;
+		width:929px;
+		}

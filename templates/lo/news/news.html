@@ -1,0 +1,30 @@
+{% extends 'lo/base.html' %}
+{% load news_extras %}
+
+{% block title %}
+    <title>{{ news_page.seo_title }}</title>
+    <meta name="description" content="{{ news_page.seo_desc }}">
+    <meta name="keywords" content="{{ news_page.seo_kwrds }}">
+{% endblock title %}
+
+{% block subnav %}
+{% for page in news_page.parent.subpages %}
+    {% include 'lo/__left_menu.html' %}
+{% endfor %}
+{% endblock %}
+
+{% block content %}
+<div class="page">
+    <h1>Новости</h1><br>
+    <div class="hentry">
+        {% for item in page_object.object_list %}
+        <h2><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h2>
+        <p class="published">{{ item.created_date|custom_date }}</p>
+        {% endfor %}
+    </div>
+
+    <div>
+        {% include 'lo/__pagination.html' %}
+    </div>
+</div>
+{% endblock content %}

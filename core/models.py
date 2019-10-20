@@ -89,6 +89,17 @@ class ExternalLink(models.Model):
         return self.title
 
 
+class Legacy(SEO):
+    text = models.TextField(verbose_name='Обработка персональных данных')
+
+    class Meta:
+        verbose_name = 'Обработка персональных данных'
+        verbose_name_plural = 'Обработка персональных данных'
+
+    def __str__(self):
+        return 'Обработка персональных данных'
+
+
 class MailToString(models.Model):
     email = models.EmailField(max_length=250, verbose_name='E-mail')
 

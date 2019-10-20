@@ -1,0 +1,6 @@
+{% load news_extras %}
+
+{% for item in news %}
+<h2><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h2>
+<p class="published">{{ item.created_date|custom_date }}</p>
+{% endfor %}
