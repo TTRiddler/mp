@@ -11,5 +11,5 @@ class PageView(View):
             'page_item': page_item,
         }
 
-        lo = '' if request.session.get('main_view') else 'lo/'
+        lo = 'lo/' if request.session.get('is_lo') else ''
         return render(request, lo + 'pages/page.html', context)

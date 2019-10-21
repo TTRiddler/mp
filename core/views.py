@@ -33,18 +33,15 @@ class IndexView(View):
             'main_menu_news': main_menu_news,
         }
 
-        lo = '' if request.session.get('main_view') else 'lo/'
+        lo = 'lo/' if request.session.get('is_lo') else ''
         return render(request, lo + 'core/index.html', context)
 
 
 class ChangeView(View):
     def get(self, request):
-        main_view = request.session.get('main_view')
+        is_lo = request.session.get('is_lo')
 
-        if main_view is None:
-            request.session['main_view'] = True
-        else:
-            request.session['main_view'] = False if main_view else True
+        request.session['is_lo'] = True if not is_lo else False
 
         return redirect('index')
 
@@ -57,7 +54,7 @@ class LegacyView(View):
             'legacy': legacy,
         }
 
-        lo = '' if request.session.get('main_view') else 'lo/'
+        lo = 'lo/' if request.session.get('is_lo') else ''
         return render(request, lo + 'core/legacy.html', context)
 
 
@@ -107,5 +104,5 @@ class SearchView(View):
             'q_albums': albums,
         }
 
-        lo = '' if request.session.get('main_view') else 'lo/'
+        lo = 'lo/' if request.session.get('is_lo') else ''
         return render(request, lo + 'core/search.html', context)

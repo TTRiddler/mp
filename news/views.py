@@ -26,7 +26,7 @@ class NewsView(View):
             'prev_url': prev_url,
         }
 
-        lo = '' if request.session.get('main_view') else 'lo/'
+        lo = 'lo/' if request.session.get('is_lo') else ''
         return render(request, lo + 'news/news.html', context)
 
 
@@ -40,7 +40,7 @@ class NewsDetailView(View):
             'news_page': news_page,
         }
 
-        lo = '' if request.session.get('main_view') else 'lo/'
+        lo = 'lo/' if request.session.get('is_lo') else ''
         return render(request, lo + 'news/news_detail.html', context)
 
 
@@ -54,7 +54,7 @@ class MoreNewsView(View):
         
         news = paginator.page(page)
 
-        lo = '' if request.session.get('main_view') else 'lo/'
+        lo = 'lo/' if request.session.get('is_lo') else ''
         
         news_html = loader.render_to_string(
             lo + 'news/__more_news.html',
